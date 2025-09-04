@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function App() {
   const [message, setMessage] = useState('');
 
   const fetchMessage = async () => {
-    const res = await fetch('http://127.0.0.1:8080/api/hello');
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const res = await fetch(`${backendUrl}/api/hello`);
     const data = await res.json();
     setMessage(data.msg);
   };
